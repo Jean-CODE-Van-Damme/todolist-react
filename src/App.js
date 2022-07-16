@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from "./components/Header";
+import Form from "./components/Form";
+import { useState } from "react";
+
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faEnvelope,
+  faKey,
+  faListAlt,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
+library.add(faEnvelope, faKey, faListAlt, faTrash);
 
 function App() {
+  const [task, setTask] = useState("");
+  const [taskList, setTaskList] = useState([]);
+  const copyTaskList = [...taskList];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header title=" 💄 Audrey To Do List 👠" />
+
+      <Form
+        task={task}
+        setTask={setTask}
+        taskList={taskList}
+        setTaskList={setTaskList}
+        copyTaskList={copyTaskList}
+      />
+
+      <div className="heart">♥️</div>
     </div>
   );
 }
