@@ -20,19 +20,20 @@ const Form = ({ task, setTask, taskList, setTaskList, copyTaskList }) => {
               return (
                 <div className="checkbox" key={index}>
                   <input
+                    type="checkbox"
                     checked={element.isDone ? true : false}
-                    onChange={(event) => {
+                    onChange={() => {
                       // !!!
                       copyTaskList[index].isDone = !copyTaskList[index].isDone;
                       setTaskList(copyTaskList);
                     }}
-                    type="checkbox"
                   />
                   <p className={element.isDone === true ? "line-trought" : ""}>
                     {element.label}
                   </p>
 
                   <span
+                    className="icon"
                     onClick={() => {
                       copyTaskList.splice(index, 1);
                       setTaskList(copyTaskList);
